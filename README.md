@@ -5,7 +5,8 @@
 
 A collection of auto-generated images for Radxa Zero.
 
-* Armbian images will have name started with `Armbian`.
+* Official Armbian can be downloaded from [here](https://www.armbian.com/radxa-zero/).
+* **Unofficial** Armbian images will have name started with `Armbian`.
 * Radxa debos image will have name started with the board name.
 * Manjaro users can visit [here](https://github.com/manjaro-arm/radxa-zero-images).
 
