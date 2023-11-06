@@ -2,12 +2,19 @@ name: Build image for Test channel
 on:
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 jobs:
   prepare_release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Generate rbuild changelog
+        uses: radxa-repo/rbuild-changelog@main
+        with:
+          product: radxa-zero
       - name: Create empty release
         id: release
         uses: softprops/action-gh-release@v1
@@ -20,6 +27,7 @@ jobs:
           target_commitish: main
           draft: false
           prerelease: true
+          files: .changelog/changelog.md
     outputs:
       release_id: ${{ steps.release.outputs.id }}
   build:
@@ -34,7 +42,7 @@ jobs:
         flavors: [kde, cli]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Upload rbuild image
         uses: radxa-repo/rbuild@main
         if: matrix.build_systems == 'rbuild'
