@@ -1,7 +1,6 @@
-version: 2
 updates:
-  # Maintain dependencies for GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
+- directory: "/"
+  package-ecosystem: "github-actions"
+  schedule:
+    interval: "daily"
+version: 2
